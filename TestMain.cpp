@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
     color[2] = 0.0; //red
     
     //filtervalue is 0-255 (255 catches nothing/0 catches everything)
-    double intensity = 175.0;
+    double intensity = 150.0;
     //1d array containing locations of stars (y * #rows + x)
     double* hits = new double[FImage.rows*FImage.cols];
 
@@ -60,12 +60,41 @@ int main(int argc, char **argv) {
         }
     }
     
+    //testing algorthim
+    /*Mat checkedpixels(image.size(),CV_BGR2GRAY);
+    int starnumber = 1;
+    bool stardone = true;
     //counting amount of pixels that contain stars
     for (int i = 0; i < FImage.rows; i++) {
         for (int j = 0; j < FImage.cols; j++) {
-               if (hits[j*FImage.rows+i] == 1) {
-                   FImage.at<Vec3b>(i,j) = color;
-                   starcount++;
+            stardone = true;
+            if (hits[j*FImage.rows+i] == 1) {
+                hits[j*FImage.rows+i] = starnumber;
+                int u = i;
+                int r = j;
+                while (stardone) {
+                    if (hits[r*FImage.rows+u+1] == 1) {
+                        hits[r*FImage.rows+u+1] = starnumber;
+                        u++;
+                    }
+                    else if (hits[(1+r)*FImage.rows+u] == 1){
+                        
+                    }
+                    
+                }
+                starnumber++;
+                FImage.at<Vec3b>(i,j) = color;
+                starcount++;
+            }
+            else
+                hits[j*FImage.rows+i] = 0;
+       }
+    }
+    */
+    for (int i = 0; i < FImage.rows; i++) {
+        for (int j = 0; j < FImage.cols; j++) {
+            if (hits[j*FImage.rows+i] == 1) {
+                FImage.at<Vec3b>(i,j) = color;
             }
         }
     }
@@ -81,7 +110,10 @@ int main(int argc, char **argv) {
     //saving output
     string outputDir = string(argv[2]);
     string outputFile = outputDir + "/" + filename;
-    imwrite(outputFile, FImage);
+    
+    //which file to save?
+    //imwrite(outputFile, FImage);
+    imwrite(outputFile, edge);
     
     //displaying image, computed image,and edges
     imshow(filename, image);

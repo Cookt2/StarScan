@@ -1,0 +1,4 @@
+/Users/TJC/StarScan/build/CMakeFiles/install.dir
+/Users/TJC/StarScan/build/CMakeFiles/Assign02.dir
+/Users/TJC/StarScan/build/CMakeFiles/ALL_BUILD.dir
+/Users/TJC/StarScan/build/CMakeFiles/ZERO_CHECK.dir

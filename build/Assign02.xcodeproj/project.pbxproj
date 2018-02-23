@@ -1,0 +1,815 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		3656F892E9734524850B7240 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3E351E9935D44149BB3A22D3 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				E4395DCA4CA648ADB1EA858F /* CMake Rules */,
+			);
+			dependencies = (
+				9350FD5FDA2A4B17A06576CC /* PBXTargetDependency */,
+				1FCE4337BEF54B9599EEA06B /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		55AEBAF35D2B4B7DA89F88CE /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B4F205E561B04A2C8F6D6201 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				AF4043011A1E43DB9B4B67E3 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		A828E35B11D640F4BBCFCFEE /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6D0EEF6CC94940038C505A01 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				2B8344F874B848F2BB33B907 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				7DC0C2A11966497093347F0B /* PBXTargetDependency */,
+			);
+			name = install;
+			productName = install;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1D72F94578064DC2A6C998CF /* /Users/TJC/StarScan/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = A6363F3CF2974776A31C771D /* /Users/TJC/StarScan/CMakeLists.txt */; };
+		C06CB797291041F197B0C5CB /* /Users/TJC/StarScan/TestMain.cpp */ = {isa = PBXBuildFile; fileRef = 222CFDFE59BD4B6186C7C8BE /* /Users/TJC/StarScan/TestMain.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		1C0429CA2AE14113A2242A72 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		3FF0A73465D24E4EB19C4124 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		5673CAB6ED8B45449A9F4BCC /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		B0833AC62C1F4B0FBBCB39EE /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		2DE43870A73848C4ABDAD3C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78FD610678884C6297D00F70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3656F892E9734524850B7240;
+			remoteInfo = ALL_BUILD;
+		};
+		44E26823E7694A999CEAAB85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78FD610678884C6297D00F70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 296F2E5BA744476D9D56D749;
+			remoteInfo = Assign02;
+		};
+		8276175D4F9C4D95AA9D7E12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78FD610678884C6297D00F70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55AEBAF35D2B4B7DA89F88CE;
+			remoteInfo = ZERO_CHECK;
+		};
+		CD25FA1D8FC6470E85A85A8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78FD610678884C6297D00F70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55AEBAF35D2B4B7DA89F88CE;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		222CFDFE59BD4B6186C7C8BE /* /Users/TJC/StarScan/TestMain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TestMain.cpp; path = TestMain.cpp; sourceTree = SOURCE_ROOT; };
+		3506B87335E34A6B9963C23D /* /Users/TJC/StarScan/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A6363F3CF2974776A31C771D /* /Users/TJC/StarScan/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		EBF45A4B94AA402DAF2371AA /* /Users/TJC/StarScan/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		ECABEC1AF7BC41718B3A69C4 /* Assign02 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Assign02; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1B2DC1D4964643B98122DC38 /* Assign02 */ = {
+			isa = PBXGroup;
+			children = (
+				352F96B4675045FFB4A844CD /* Source Files */,
+				A6363F3CF2974776A31C771D /* /Users/TJC/StarScan/CMakeLists.txt */,
+			);
+			name = Assign02;
+			sourceTree = "<group>";
+		};
+		352F96B4675045FFB4A844CD /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				222CFDFE59BD4B6186C7C8BE /* /Users/TJC/StarScan/TestMain.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		3CFDBF8415184036A56D118E /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		6736F4F8F2A8416EA9186C9E /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				3CFDBF8415184036A56D118E /* CMake Rules */,
+				EBF45A4B94AA402DAF2371AA /* /Users/TJC/StarScan/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		BD7E27DB183E4065B09F6850 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		E755248D1CEB49ED88F695A2 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				BD7E27DB183E4065B09F6850 /* CMake Rules */,
+				3506B87335E34A6B9963C23D /* /Users/TJC/StarScan/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		F017959E3886496CAF1D8462 = {
+			isa = PBXGroup;
+			children = (
+				1B2DC1D4964643B98122DC38 /* Assign02 */,
+				E755248D1CEB49ED88F695A2 /* ALL_BUILD */,
+				6736F4F8F2A8416EA9186C9E /* ZERO_CHECK */,
+				F2646896F9C348898D13D51C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2646896F9C348898D13D51C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECABEC1AF7BC41718B3A69C4 /* Assign02 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		296F2E5BA744476D9D56D749 /* Assign02 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 704512E7F2194949B02E9EAB /* Build configuration list for PBXNativeTarget "Assign02" */;
+			buildPhases = (
+				FA4BED3685E6440183501781 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DE12CA4A06E4AEDBB45ABC8 /* PBXTargetDependency */,
+			);
+			name = Assign02;
+			productName = Assign02;
+			productReference = ECABEC1AF7BC41718B3A69C4 /* Assign02 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78FD610678884C6297D00F70 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0920;
+			};
+			buildConfigurationList = 4645A2F7C4614A7D889E9149 /* Build configuration list for PBXProject "Assign02" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				B0833AC62C1F4B0FBBCB39EE /* Debug */,
+				5673CAB6ED8B45449A9F4BCC /* Release */,
+				3FF0A73465D24E4EB19C4124 /* MinSizeRel */,
+				1C0429CA2AE14113A2242A72 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = F017959E3886496CAF1D8462;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				3656F892E9734524850B7240 /* ALL_BUILD */,
+				296F2E5BA744476D9D56D749 /* Assign02 */,
+				55AEBAF35D2B4B7DA89F88CE /* ZERO_CHECK */,
+				A828E35B11D640F4BBCFCFEE /* install */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B8344F874B848F2BB33B907 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/TJC/StarScan/build -f /Users/TJC/StarScan/build/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		71285541A17147138007BDEF = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		A307AD6C6C1547D79BAC95DC = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		AF4043011A1E43DB9B4B67E3 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/TJC/StarScan/build -f /Users/TJC/StarScan/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		B6299DE569C7490A97913049 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		E4395DCA4CA648ADB1EA858F /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/TJC/StarScan/build -f /Users/TJC/StarScan/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA4BED3685E6440183501781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C06CB797291041F197B0C5CB /* /Users/TJC/StarScan/TestMain.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FCE4337BEF54B9599EEA06B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55AEBAF35D2B4B7DA89F88CE /* ZERO_CHECK */;
+			targetProxy = CD25FA1D8FC6470E85A85A8B /* PBXContainerItemProxy */;
+		};
+		3DE12CA4A06E4AEDBB45ABC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55AEBAF35D2B4B7DA89F88CE /* ZERO_CHECK */;
+			targetProxy = 8276175D4F9C4D95AA9D7E12 /* PBXContainerItemProxy */;
+		};
+		7DC0C2A11966497093347F0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3656F892E9734524850B7240 /* ALL_BUILD */;
+			targetProxy = 2DE43870A73848C4ABDAD3C9 /* PBXContainerItemProxy */;
+		};
+		9350FD5FDA2A4B17A06576CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 296F2E5BA744476D9D56D749 /* Assign02 */;
+			targetProxy = 44E26823E7694A999CEAAB85 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A7AB067B4A34A15A27E29F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		12BD64F395924C34B7ADBF18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		153A4F9C7C2A4EF7A19C8BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		34A65ED22BCD4122AC3497A0 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/TJC/StarScan/build/build;
+			};
+			name = RelWithDebInfo;
+		};
+		34EC52BF611F46E79422D48F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		3DACFABF9A9D41C19D008495 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		47AF9503D2EA4C8494C83DD5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/TJC/StarScan/build/build;
+			};
+			name = MinSizeRel;
+		};
+		557D932701BD40BE9C173C97 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++1z     -DNDEBUG  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/lib/libopencv_stitching.3.4.0.dylib /usr/local/lib/libopencv_superres.3.4.0.dylib /usr/local/lib/libopencv_videostab.3.4.0.dylib /usr/local/lib/libopencv_aruco.3.4.0.dylib /usr/local/lib/libopencv_bgsegm.3.4.0.dylib /usr/local/lib/libopencv_bioinspired.3.4.0.dylib /usr/local/lib/libopencv_ccalib.3.4.0.dylib /usr/local/lib/libopencv_dpm.3.4.0.dylib /usr/local/lib/libopencv_face.3.4.0.dylib /usr/local/lib/libopencv_fuzzy.3.4.0.dylib /usr/local/lib/libopencv_img_hash.3.4.0.dylib /usr/local/lib/libopencv_line_descriptor.3.4.0.dylib /usr/local/lib/libopencv_optflow.3.4.0.dylib /usr/local/lib/libopencv_reg.3.4.0.dylib /usr/local/lib/libopencv_rgbd.3.4.0.dylib /usr/local/lib/libopencv_saliency.3.4.0.dylib /usr/local/lib/libopencv_stereo.3.4.0.dylib /usr/local/lib/libopencv_structured_light.3.4.0.dylib /usr/local/lib/libopencv_surface_matching.3.4.0.dylib /usr/local/lib/libopencv_tracking.3.4.0.dylib /usr/local/lib/libopencv_xfeatures2d.3.4.0.dylib /usr/local/lib/libopencv_ximgproc.3.4.0.dylib /usr/local/lib/libopencv_xobjdetect.3.4.0.dylib /usr/local/lib/libopencv_xphoto.3.4.0.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/local/lib/libopencv_shape.3.4.0.dylib /usr/local/lib/libopencv_photo.3.4.0.dylib /usr/local/lib/libopencv_datasets.3.4.0.dylib /usr/local/lib/libopencv_plot.3.4.0.dylib /usr/local/lib/libopencv_text.3.4.0.dylib /usr/local/lib/libopencv_dnn.3.4.0.dylib /usr/local/lib/libopencv_ml.3.4.0.dylib /usr/local/lib/libopencv_video.3.4.0.dylib /usr/local/lib/libopencv_calib3d.3.4.0.dylib /usr/local/lib/libopencv_features2d.3.4.0.dylib /usr/local/lib/libopencv_highgui.3.4.0.dylib /usr/local/lib/libopencv_videoio.3.4.0.dylib /usr/local/lib/libopencv_phase_unwrapping.3.4.0.dylib /usr/local/lib/libopencv_flann.3.4.0.dylib /usr/local/lib/libopencv_imgcodecs.3.4.0.dylib /usr/local/lib/libopencv_objdetect.3.4.0.dylib /usr/local/lib/libopencv_imgproc.3.4.0.dylib /usr/local/lib/libopencv_core.3.4.0.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Assign02;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		57DA044DEEDD4973910DBECB /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		6D62F87AA00A489B8F41F4CD /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++1z        -DNDEBUG  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/lib/libopencv_stitching.3.4.0.dylib /usr/local/lib/libopencv_superres.3.4.0.dylib /usr/local/lib/libopencv_videostab.3.4.0.dylib /usr/local/lib/libopencv_aruco.3.4.0.dylib /usr/local/lib/libopencv_bgsegm.3.4.0.dylib /usr/local/lib/libopencv_bioinspired.3.4.0.dylib /usr/local/lib/libopencv_ccalib.3.4.0.dylib /usr/local/lib/libopencv_dpm.3.4.0.dylib /usr/local/lib/libopencv_face.3.4.0.dylib /usr/local/lib/libopencv_fuzzy.3.4.0.dylib /usr/local/lib/libopencv_img_hash.3.4.0.dylib /usr/local/lib/libopencv_line_descriptor.3.4.0.dylib /usr/local/lib/libopencv_optflow.3.4.0.dylib /usr/local/lib/libopencv_reg.3.4.0.dylib /usr/local/lib/libopencv_rgbd.3.4.0.dylib /usr/local/lib/libopencv_saliency.3.4.0.dylib /usr/local/lib/libopencv_stereo.3.4.0.dylib /usr/local/lib/libopencv_structured_light.3.4.0.dylib /usr/local/lib/libopencv_surface_matching.3.4.0.dylib /usr/local/lib/libopencv_tracking.3.4.0.dylib /usr/local/lib/libopencv_xfeatures2d.3.4.0.dylib /usr/local/lib/libopencv_ximgproc.3.4.0.dylib /usr/local/lib/libopencv_xobjdetect.3.4.0.dylib /usr/local/lib/libopencv_xphoto.3.4.0.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/local/lib/libopencv_shape.3.4.0.dylib /usr/local/lib/libopencv_photo.3.4.0.dylib /usr/local/lib/libopencv_datasets.3.4.0.dylib /usr/local/lib/libopencv_plot.3.4.0.dylib /usr/local/lib/libopencv_text.3.4.0.dylib /usr/local/lib/libopencv_dnn.3.4.0.dylib /usr/local/lib/libopencv_ml.3.4.0.dylib /usr/local/lib/libopencv_video.3.4.0.dylib /usr/local/lib/libopencv_calib3d.3.4.0.dylib /usr/local/lib/libopencv_features2d.3.4.0.dylib /usr/local/lib/libopencv_highgui.3.4.0.dylib /usr/local/lib/libopencv_videoio.3.4.0.dylib /usr/local/lib/libopencv_phase_unwrapping.3.4.0.dylib /usr/local/lib/libopencv_flann.3.4.0.dylib /usr/local/lib/libopencv_imgcodecs.3.4.0.dylib /usr/local/lib/libopencv_objdetect.3.4.0.dylib /usr/local/lib/libopencv_imgproc.3.4.0.dylib /usr/local/lib/libopencv_core.3.4.0.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Assign02;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		7DD6BE153D6A4B2FA29E96BC /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		822ED4808E104C39B5E6C99F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		883B75E82DC542BCAE414A73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++1z     -DNDEBUG  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/lib/libopencv_stitching.3.4.0.dylib /usr/local/lib/libopencv_superres.3.4.0.dylib /usr/local/lib/libopencv_videostab.3.4.0.dylib /usr/local/lib/libopencv_aruco.3.4.0.dylib /usr/local/lib/libopencv_bgsegm.3.4.0.dylib /usr/local/lib/libopencv_bioinspired.3.4.0.dylib /usr/local/lib/libopencv_ccalib.3.4.0.dylib /usr/local/lib/libopencv_dpm.3.4.0.dylib /usr/local/lib/libopencv_face.3.4.0.dylib /usr/local/lib/libopencv_fuzzy.3.4.0.dylib /usr/local/lib/libopencv_img_hash.3.4.0.dylib /usr/local/lib/libopencv_line_descriptor.3.4.0.dylib /usr/local/lib/libopencv_optflow.3.4.0.dylib /usr/local/lib/libopencv_reg.3.4.0.dylib /usr/local/lib/libopencv_rgbd.3.4.0.dylib /usr/local/lib/libopencv_saliency.3.4.0.dylib /usr/local/lib/libopencv_stereo.3.4.0.dylib /usr/local/lib/libopencv_structured_light.3.4.0.dylib /usr/local/lib/libopencv_surface_matching.3.4.0.dylib /usr/local/lib/libopencv_tracking.3.4.0.dylib /usr/local/lib/libopencv_xfeatures2d.3.4.0.dylib /usr/local/lib/libopencv_ximgproc.3.4.0.dylib /usr/local/lib/libopencv_xobjdetect.3.4.0.dylib /usr/local/lib/libopencv_xphoto.3.4.0.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/local/lib/libopencv_shape.3.4.0.dylib /usr/local/lib/libopencv_photo.3.4.0.dylib /usr/local/lib/libopencv_datasets.3.4.0.dylib /usr/local/lib/libopencv_plot.3.4.0.dylib /usr/local/lib/libopencv_text.3.4.0.dylib /usr/local/lib/libopencv_dnn.3.4.0.dylib /usr/local/lib/libopencv_ml.3.4.0.dylib /usr/local/lib/libopencv_video.3.4.0.dylib /usr/local/lib/libopencv_calib3d.3.4.0.dylib /usr/local/lib/libopencv_features2d.3.4.0.dylib /usr/local/lib/libopencv_highgui.3.4.0.dylib /usr/local/lib/libopencv_videoio.3.4.0.dylib /usr/local/lib/libopencv_phase_unwrapping.3.4.0.dylib /usr/local/lib/libopencv_flann.3.4.0.dylib /usr/local/lib/libopencv_imgcodecs.3.4.0.dylib /usr/local/lib/libopencv_objdetect.3.4.0.dylib /usr/local/lib/libopencv_imgproc.3.4.0.dylib /usr/local/lib/libopencv_core.3.4.0.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Assign02;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		88FD35589C9348D3A55CF154 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		9A0DE1A17FEE4DD8B4F2AAA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		CD47A142B4BC4D4A9B2A86EF /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		CE71545E89BB4E65BE53D4B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/TJC/StarScan/build/build;
+			};
+			name = Debug;
+		};
+		EA5096D607F24A46AA958CFC /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv,/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		EDE2C345D569444F9E51E78C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = /Users/TJC/StarScan/build/build;
+			};
+			name = Release;
+		};
+		FEA130F03C7F4AFFB2F01372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/TJC/StarScan/.);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++1z     ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /usr/local/lib/libopencv_stitching.3.4.0.dylib /usr/local/lib/libopencv_superres.3.4.0.dylib /usr/local/lib/libopencv_videostab.3.4.0.dylib /usr/local/lib/libopencv_aruco.3.4.0.dylib /usr/local/lib/libopencv_bgsegm.3.4.0.dylib /usr/local/lib/libopencv_bioinspired.3.4.0.dylib /usr/local/lib/libopencv_ccalib.3.4.0.dylib /usr/local/lib/libopencv_dpm.3.4.0.dylib /usr/local/lib/libopencv_face.3.4.0.dylib /usr/local/lib/libopencv_fuzzy.3.4.0.dylib /usr/local/lib/libopencv_img_hash.3.4.0.dylib /usr/local/lib/libopencv_line_descriptor.3.4.0.dylib /usr/local/lib/libopencv_optflow.3.4.0.dylib /usr/local/lib/libopencv_reg.3.4.0.dylib /usr/local/lib/libopencv_rgbd.3.4.0.dylib /usr/local/lib/libopencv_saliency.3.4.0.dylib /usr/local/lib/libopencv_stereo.3.4.0.dylib /usr/local/lib/libopencv_structured_light.3.4.0.dylib /usr/local/lib/libopencv_surface_matching.3.4.0.dylib /usr/local/lib/libopencv_tracking.3.4.0.dylib /usr/local/lib/libopencv_xfeatures2d.3.4.0.dylib /usr/local/lib/libopencv_ximgproc.3.4.0.dylib /usr/local/lib/libopencv_xobjdetect.3.4.0.dylib /usr/local/lib/libopencv_xphoto.3.4.0.dylib -framework Cocoa -framework IOKit -framework CoreVideo /usr/local/lib/libopencv_shape.3.4.0.dylib /usr/local/lib/libopencv_photo.3.4.0.dylib /usr/local/lib/libopencv_datasets.3.4.0.dylib /usr/local/lib/libopencv_plot.3.4.0.dylib /usr/local/lib/libopencv_text.3.4.0.dylib /usr/local/lib/libopencv_dnn.3.4.0.dylib /usr/local/lib/libopencv_ml.3.4.0.dylib /usr/local/lib/libopencv_video.3.4.0.dylib /usr/local/lib/libopencv_calib3d.3.4.0.dylib /usr/local/lib/libopencv_features2d.3.4.0.dylib /usr/local/lib/libopencv_highgui.3.4.0.dylib /usr/local/lib/libopencv_videoio.3.4.0.dylib /usr/local/lib/libopencv_phase_unwrapping.3.4.0.dylib /usr/local/lib/libopencv_flann.3.4.0.dylib /usr/local/lib/libopencv_imgcodecs.3.4.0.dylib /usr/local/lib/libopencv_objdetect.3.4.0.dylib /usr/local/lib/libopencv_imgproc.3.4.0.dylib /usr/local/lib/libopencv_core.3.4.0.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Assign02;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/TJC/StarScan/build;
+				SYSTEM_HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/include/opencv);
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E351E9935D44149BB3A22D3 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A7AB067B4A34A15A27E29F6 /* Debug */,
+				34EC52BF611F46E79422D48F /* Release */,
+				7DD6BE153D6A4B2FA29E96BC /* MinSizeRel */,
+				EA5096D607F24A46AA958CFC /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4645A2F7C4614A7D889E9149 /* Build configuration list for PBXProject "Assign02" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE71545E89BB4E65BE53D4B4 /* Debug */,
+				EDE2C345D569444F9E51E78C /* Release */,
+				47AF9503D2EA4C8494C83DD5 /* MinSizeRel */,
+				34A65ED22BCD4122AC3497A0 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6D0EEF6CC94940038C505A01 /* Build configuration list for PBXAggregateTarget "install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				153A4F9C7C2A4EF7A19C8BAC /* Debug */,
+				9A0DE1A17FEE4DD8B4F2AAA8 /* Release */,
+				3DACFABF9A9D41C19D008495 /* MinSizeRel */,
+				822ED4808E104C39B5E6C99F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		704512E7F2194949B02E9EAB /* Build configuration list for PBXNativeTarget "Assign02" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEA130F03C7F4AFFB2F01372 /* Debug */,
+				883B75E82DC542BCAE414A73 /* Release */,
+				557D932701BD40BE9C173C97 /* MinSizeRel */,
+				6D62F87AA00A489B8F41F4CD /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B4F205E561B04A2C8F6D6201 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12BD64F395924C34B7ADBF18 /* Debug */,
+				88FD35589C9348D3A55CF154 /* Release */,
+				57DA044DEEDD4973910DBECB /* MinSizeRel */,
+				CD47A142B4BC4D4A9B2A86EF /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78FD610678884C6297D00F70 /* Project object */;
+}
