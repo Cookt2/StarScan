@@ -7,6 +7,7 @@ Prof:    Dr. Reale */
 #include <opencv2/highgui/highgui.hpp>
 #include "opencv2/imgproc/imgproc.hpp"
 #include <iostream>
+#include <math.h>
 #include "opencv2/opencv.hpp"
 
 
@@ -47,6 +48,52 @@ int main(int argc, char **argv) {
     color[0] = 0.0; //blue
     color[1] = 255.0; //green
     color[2] = 0.0; //red
+    
+    //internal representation of big dipper
+    const long double PI = 3.141592653589793238;
+                                //tary - currenty, tarx - currentx
+    int constlocx[7];
+    int constelocy[7];
+    
+    double angle1 = 360-(180*atan2(84.2271 - 36.5, 345.691 - 268.5))/PI;
+    double d1 = sqrt(pow((84.2271 - 36.5),2)+ pow((345.691 - 268.5),2));
+    if (angle1 >= 360) {
+        angle1 = angle1-360;
+    }
+    
+    double angle2 = 360-180*atan2(141.62 - 84.2271, 364.62 - 345.691)/PI;
+    double d2 = sqrt(pow((141.62 - 84.2271),2)+ pow((364.62 - 345.691),2));
+    if (angle2 >= 360) {
+        angle2 = angle2-360;
+    }
+    cout<<"angle2: "<<angle2<<endl;
+    double angle3 = 360-180*atan2(205.861 - 141.62, 392.861 - 364.62)/PI;
+    double d3 = sqrt(pow((205.861 - 141.62),2)+ pow((392.861 - 364.62),2));
+    if (angle3 >= 360) {
+        angle3 = angle3-360;
+    }
+
+    double angle4 = 360-180*atan2(257 - 205.861, 367 - 392.861)/PI;
+    double d4 = sqrt(pow((257 - 205.861),2)+ pow((367 - 392.861),2));
+    if (angle4 >= 360) {
+        angle4 = angle4-360;
+    }
+
+    double angle5 = 360-180*atan2(324 - 257, 437.5 - 367)/PI;
+    double d5 = sqrt(pow((324 - 257),2)+ pow((437.5 - 367),2));
+    if (angle5 >= 360) {
+        angle5 = angle5-360;
+    }
+    
+    double angle6 = 360-180*atan2(285.62 - 324, 493.62 - 437.5)/PI;
+    double d6 = sqrt(pow((285.62 - 324),2)+ pow((493.62 - 437.5),2));
+    if (angle6 >= 360) {
+        angle6 = angle6-360;
+    }
+    
+    //displays angles and distances
+    cout<<"Angle 1->6: "<<angle1<<", "<<angle2<<", "<<angle3<<", "<<angle4<<", "<<angle5<<", "<<angle6<<endl;
+    cout<<"Distance 1->6: "<<d1<<", "<<d2<<", "<<d3<<", "<<d4<<", "<<d5<<", "<<d6<<endl;
     
     //filtervalue is 0-255 (255 catches nothing/0 catches everything)
     double intensity = 150.0;
@@ -127,37 +174,122 @@ int main(int argc, char **argv) {
     
     int r = 0;
     for(vector<KeyPoint>::iterator blobIt = keypoints.begin(); blobIt != keypoints.end(); blobIt++){
-        cout <<"Star #"<<r+1<< " center at: " << blobIt->pt.x << ", " << blobIt->pt.y << endl;
+        //cout <<"Star #"<<r+1<< " center at: " << blobIt->pt.x << ", " << blobIt->pt.y << endl;
         locx[r] = blobIt->pt.x;
         locy[r] = blobIt->pt.y;
         r++;
     }
     
-    Mat constel(image.size(),CV_8UC1);
-    for (int i = 0; i < image.rows; i++) {
-        for (int j = 0; j < image.cols; j++) {
-            for (int k = 0; k < keypoints.size(); k++) {
-                if (j == round(locx[k]) && i == round(locy[k])) {
-                    constel.at<uchar>(i,j) = 255;
+    int starcount  = 2;
+    for (int i = keypoints.size()-1; i >= 0; i--) {
+        //cout<<"i = "<<i<<": "<<locx[i]<<", "<<locy[i]<<endl;
+        
+        double current1x, current1y, current2x, current2y;
+        current1x = locx[i];
+        current1y = locy[i];
+        
+        if (i < 6) {
+            //not enough stars left to form constellation
+            break;
+        }
+        for (int f = keypoints.size()-1; f >= 0; f--) {
+            current2x = locx[f];
+            current2y = locy[f];
+            if (current1x == current2x && current1y == current2y) {
+                cout<<"ERROR: repeat"<<endl;
+            }
+            else {
+            //tary - currenty, tarx - currentx
+            double testd1 = sqrt(pow((current2y - current1y),2)+ pow((current2x - current1x),2));
+            double scale = testd1/d1;
+            double orientation = angle1 - (360-180*atan2(current2y - current1y, current2x - current1x)/PI);
+            double newdistance = scale*d2;
+            double newangle = orientation + angle2;
+            
+            double xoffset = locx[f] + cos(newangle*PI/180)*newdistance;
+            double yoffset = locy[f]+ -1*sin(newangle*PI/180)*newdistance;
+                cout<<"x1: "<<current1x<<"y1: "<<current1y<<endl;
+                cout<<"x2: "<<current2x<<"y2: "<<current2y<<endl;
+                cout<<"x3: "<<xoffset<<"y3: "<<yoffset<<endl;
+                cout<<"angle: "<<newangle<<endl;
+                cout<<"scale: "<<scale<<endl;
+                cout<<"testd1: "<<testd1<<endl;
+                cout<<"orientation: "<<orientation<<endl;
+            for (int r = keypoints.size(); r >= 0 ; r--) {
+                    if ((locx[r] <= 1+xoffset && locx[r] >= xoffset-1)  && (locy[r] <= 1+yoffset && locy[r] >= yoffset-1)) {
+                        starcount++;
+                        cout<<"we made it: "<<starcount<<endl;
+                        double xoffset3 = locx[r]+(cos((orientation+angle3*PI)/180))*(d3*scale);
+                        double yoffset3 = locy[r]+(-1*sin((orientation+angle3*PI)/180))*(d3*scale);
+                        for (int q = keypoints.size(); q >= 0; q--) {
+                            if ((locx[q] <= 1+xoffset3 && locx[q] >= xoffset3-1)  && (locy[q] <= 1+yoffset3 && locy[q] >= yoffset3-1)){
+                                starcount++;
+                                cout<<"we made it: "<<starcount<<endl;
+                                double xoffset4 = locx[q]+(cos((orientation+angle4*PI)/180))*(d4*scale);
+                                double yoffset4 = locy[q]+(-1*sin((orientation+angle4*PI)/180))*(d4*scale);
+                                for (int q = keypoints.size(); q >= 0; q--) {
+                                    if ((locx[q] <= 1+xoffset4 && locx[q] >= xoffset4-1)  && (locy[q] <= 1+yoffset4 && locy[q] >= yoffset4-1)){
+                                        starcount++;
+                                        cout<<"we made it: "<<starcount<<endl;
+                                        double xoffset5 = locx[q]+(cos((orientation+angle5*PI)/180))*(d5*scale);
+                                        double yoffset5 = locy[q]+(-1*sin((orientation+angle5*PI)/180))*(d5*scale);
+                                        for (int q = keypoints.size(); q >= 0; q--) {
+                                            if ((locx[q] <= 1+xoffset5 && locx[q] >= xoffset5-1)  && (locy[q] <= 1+yoffset5 && locy[q] >= yoffset5-1)){
+                                                starcount++;
+                                                cout<<"we made it: "<<starcount<<endl;
+                                                double xoffset6 = locx[q]+(cos((orientation+angle6*PI)/180))*(d6*scale);
+                                                double yoffset6 = locy[q]+(-1*sin((orientation+angle6*PI)/180))*(d6*scale);
+                                                for (int q = keypoints.size(); q >= 0; q--) {
+                                                    if ((locx[q] <= 1+xoffset6 && locx[q] >= xoffset6-1)  && (locy[q] <= 1+yoffset6 && locy[q] >= yoffset6-1)){
+                                                        starcount++;
+                                                        cout<<"we made it: "<<starcount<<endl;
+                                                        cout<<"Found constellation..done"<<endl;
+                                                        Point a6(xoffset6,yoffset6), b6(xoffset5,yoffset5);
+                                                        line(blobimage, a6, b6, color);
+                                                        Point a5(xoffset4,yoffset4), b5(xoffset5,yoffset5);
+                                                        line(blobimage, a5, b5, color);
+                                                        Point a4(xoffset3,yoffset3), b4(xoffset4,yoffset4);
+                                                        line(blobimage, a4, b4, color);
+                                                        Point a3(xoffset3,yoffset3), b3(xoffset,yoffset);
+                                                        line(blobimage, a3, b3, color);
+                                                        Point a2(current2x,current2y), b2(xoffset,yoffset);
+                                                        line(blobimage, a2, b2, color);
+                                                        Point a1(current2x,current2y), b1(current1x,current1y);
+                                                        line(blobimage, a1, b1, color);
+                                                        Point a7(xoffset6,yoffset6), b7(xoffset3,yoffset3);
+                                                        line(blobimage, a7, b7, color);
+                                                        
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
+            
+
         }
     }
     
-    //Beginning to build search algorithm..
-    bool found = false;
-    int constellation[2][7];
-
+    Mat constel(image.size(),CV_8UC1);
+    
     for (int i = 0; i < image.rows; i++) {
         for (int j = 0; j < image.cols; j++) {
-            
-            if (constel.at<uchar>(i,j) == 255) {
-                
-            }
+            constel.at<uchar>(i,j) = 0;
         }
     }
     
+    for (int k = 0; k < keypoints.size(); k++) {
+        constel.at<uchar>(round(locy[k]),round(locx[k])) = 255;
+        
+    }
     
+    imshow("constel", constel);
+
     //experimenting with drawing lines.. (will be removed)
     //Point a(locx[0],locy[0]), b(locx[1],locy[1]);
     //line(blobimage, a, b, color);
