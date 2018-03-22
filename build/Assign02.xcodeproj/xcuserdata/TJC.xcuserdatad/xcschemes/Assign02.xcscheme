@@ -65,7 +65,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/TJC/StarScan/input/BigDipper1.png /Users/TJC/StarScan/output"
+            argument = "/Users/TJC/StarScan/input/BigDipper2.png /Users/TJC/StarScan/output"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
