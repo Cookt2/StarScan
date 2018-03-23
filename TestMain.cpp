@@ -14,8 +14,16 @@ Prof:    Dr. Reale */
 using namespace cv;
 using namespace std;
 
-#
+//Important constants
+const long double PI = 3.141592653589793238;
 
+//Important variables (these values change for accuracy)
+//filtervalue is 0-255 (255 catches nothing/0 catches everything)
+double intensity = 150.0;
+int searchzone = 10;
+int starsize = 2;
+bool visualmode = false;
+bool testingmode = true;
 
 //code from prof Reale's assignment 2 CS490
 string getFilename(string path) {
@@ -35,6 +43,26 @@ string getFilename(string path) {
     return filename;
 }
 
+void CalcPoints(double &xcalc, double &ycalc, double orientation, double scale, double angle, double distance){
+    
+    double newdistance = scale*distance;
+    double newangle = orientation + angle;
+    xcalc = xcalc + cos(newangle*PI/180)*newdistance;
+    ycalc = ycalc + -1*sin(newangle*PI/180)*newdistance;
+    
+}
+
+bool CheckPoints( double xtry, double ytry, int numstars, double locx[], double locy[], int &foundx, int &foundy) {
+    
+    for (int j = numstars; j >= 0; j--) {
+        if ((locx[j] <= searchzone+xtry && locx[j] >= xtry-searchzone)  && (locy[j] <= searchzone+ytry && locy[j] >= ytry-searchzone)) {
+            foundx = locx[j];
+            foundy = locy[j];
+            return true;
+        }
+    }
+    return false;
+}
 
 int main(int argc, char **argv) {
     
@@ -42,8 +70,9 @@ int main(int argc, char **argv) {
     string filepath = string(argv[1]);
     Mat image = imread(filepath, IMREAD_GRAYSCALE);
     Mat image2 = imread(filepath, IMREAD_GRAYSCALE);
+    Mat image3 = imread(filepath, CV_LOAD_IMAGE_COLOR);
+    Mat image4 = imread(filepath, CV_LOAD_IMAGE_COLOR);
     string filename = getFilename(filepath);
-    imshow("Original",image);
     
     //FImage contains star pixels highlighted in green
     Mat FImage(image.size(),CV_8UC3);
@@ -52,57 +81,46 @@ int main(int argc, char **argv) {
     color[1] = 255.0; //green
     color[2] = 0.0; //red
     
-    //Important constants
-    const long double PI = 3.141592653589793238;
-    
-    //Important variables (these values change for accuracy
-    //filtervalue is 0-255 (255 catches nothing/0 catches everything)
-    double intensity = 100.0;
-    int searchzone = 15;
-    int starsize = 2;
-    
     //internal representation of big dipper
                                 //tary - currenty, tarx - currentx
-    double angle1 = 360-(180*atan2(84.2271 - 36.5, 345.691 - 268.5))/PI;
-    double d1 = sqrt(pow((84.2271 - 36.5),2)+ pow((345.691 - 268.5),2));
-    if (angle1 >= 360) {
-        angle1 = angle1-360;
+    double distances[6];
+    double angles[6];
+    
+    angles[0] = 360-(180*atan2(84.2271 - 36.5, 345.691 - 268.5))/PI;
+    distances[0] = sqrt(pow((84.2271 - 36.5),2)+ pow((345.691 - 268.5),2));
+    if (angles[0] >= 360) {
+        angles[0] = angles[0] - 360;
     }
     
-    double angle2 = 360-180*atan2(141.62 - 84.2271, 364.62 - 345.691)/PI;
-    double d2 = sqrt(pow((141.62 - 84.2271),2)+ pow((364.62 - 345.691),2));
-    if (angle2 >= 360) {
-        angle2 = angle2-360;
+    angles[1] = 360-180*atan2(141.62 - 84.2271, 364.62 - 345.691)/PI;
+    distances[1] = sqrt(pow((141.62 - 84.2271),2)+ pow((364.62 - 345.691),2));
+    if (angles[1] >= 360) {
+        angles[1] = angles[1] - 360;
     }
     
-    double angle3 = 360-180*atan2(205.861 - 141.62, 392.861 - 364.62)/PI;
-    double d3 = sqrt(pow((205.861 - 141.62),2)+ pow((392.861 - 364.62),2));
-    if (angle3 >= 360) {
-        angle3 = angle3-360;
+    angles[2] = 360-180*atan2(205.861 - 141.62, 392.861 - 364.62)/PI;
+    distances[2] = sqrt(pow((205.861 - 141.62),2)+ pow((392.861 - 364.62),2));
+    if (angles[2] >= 360) {
+        angles[2] = angles[2] - 360;
     }
 
-    double angle4 = 360-180*atan2(257 - 205.861, 367 - 392.861)/PI;
-    double d4 = sqrt(pow((257 - 205.861),2)+ pow((367 - 392.861),2));
-    if (angle4 >= 360) {
-        angle4 = angle4-360;
+    angles[3] = 360-180*atan2(257 - 205.861, 367 - 392.861)/PI;
+    distances[3] = sqrt(pow((257 - 205.861),2)+ pow((367 - 392.861),2));
+    if (angles[3] >= 360) {
+        angles[3] = angles[3] - 360;
     }
 
-    double angle5 = 360-180*atan2(324 - 257, 437.5 - 367)/PI;
-    double d5 = sqrt(pow((324 - 257),2)+ pow((437.5 - 367),2));
-    if (angle5 >= 360) {
-        angle5 = angle5-360;
+    angles[4] = 360-180*atan2(324 - 257, 437.5 - 367)/PI;
+    distances[4] = sqrt(pow((324 - 257),2)+ pow((437.5 - 367),2));
+    if (angles[4] >= 360) {
+        angles[4] = angles[4] - 360;
     }
     
-    double angle6 = 360-180*atan2(285.62 - 324, 493.62 - 437.5)/PI;
-    double d6 = sqrt(pow((285.62 - 324),2)+ pow((493.62 - 437.5),2));
-    if (angle6 >= 360) {
-        angle6 = angle6-360;
+    angles[5] = 360-180*atan2(285.62 - 324, 493.62 - 437.5)/PI;
+    distances[5] = sqrt(pow((285.62 - 324),2)+ pow((493.62 - 437.5),2));
+    if (angles[5] >= 360) {
+        angles[5] = angles[5] - 360;
     }
-    
-    //displays big dipper angles and distances
-    /*cout<<"Angle 1->6: "<<angle1<<", "<<angle2<<", "<<angle3<<", "<<angle4<<", "<<angle5<<", "<<angle6<<endl;
-    cout<<"Distance 1->6: "<<d1<<", "<<d2<<", "<<d3<<", "<<d4<<", "<<d5<<", "<<d6<<endl;
-    */
     
     //1d array containing locations of stars (y * #rows + x)
     double* hits = new double[FImage.rows*FImage.cols];
@@ -173,105 +191,106 @@ int main(int argc, char **argv) {
     Mat blobimage;
     drawKeypoints( drawing, keypoints, blobimage, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
     
-    //displaying center locations of each star
+    //center locations of each star
     double* locx = new double[keypoints.size()];
     double* locy = new double[keypoints.size()];
+    int numstars = keypoints.size();
     
     int r = 0;
+    //moving points from keypoints vector to arrays for ease of use
     for(vector<KeyPoint>::iterator blobIt = keypoints.begin(); blobIt != keypoints.end(); blobIt++){
-        //cout <<"Star #"<<r+1<< " center at: " << blobIt->pt.x << ", " << blobIt->pt.y << endl;
         locx[r] = blobIt->pt.x;
         locy[r] = blobIt->pt.y;
         r++;
     }
     
-    int starcount  = 2;
+    //Variables for search algorithm
+    int starcount  = 0; //how many stars are found in the constellation
+    int constelx[7];    //contains x values of stars in constellation
+    int constely[7];    //contains y values of stars in constellation
+    int foundx;         //current found star x,y pos
+    int foundy;
+    bool hit = true;
+    bool looking = true;
+    
+    //search algorithm
     for (int i = keypoints.size()-1; i >= 0; i--) {
+        if (looking == false) {
+            break;
+        }
+        starcount = 0;
+        constelx[starcount] = locx[i];
+        constely[starcount] = locy[i];
         
-        double current1x, current1y, current2x, current2y;
-        current1x = locx[i];
-        current1y = locy[i];
-        
+        //looping through every star
         for (int f = keypoints.size()-1; f >= 0; f--) {
-            current2x = locx[f];
-            current2y = locy[f];
-            if (current1x == current2x && current1y == current2y) {
-
+            image4.copyTo(image3);
+            starcount = 1;
+            constelx[starcount] = locx[f];
+            constely[starcount] = locy[f];
+            
+            Point a1(constelx[starcount-1],constely[starcount-1]), b1(constelx[starcount],constely[starcount]);
+            line(image3, a1, b1, color);
+            if (visualmode == true) {
+                imshow("Searching..", image3);
+                waitKey(150);
             }
+            
+            if (constelx[starcount-1] == constelx[starcount] && constely[starcount-1] == constely[starcount]) {
+                //doing nothing because its checking the same star
+            }
+            
             else {
 
-            double testd1 = sqrt(pow((current2y - current1y),2)+ pow((current2x - current1x),2));
-            double scale = testd1/d1;
-            double orientation = -1 * (angle1 - (360-180*atan2(current2y - current1y, current2x - current1x)/PI));
-            double newdistance = scale*d2;
-            double newangle = orientation + angle2;
-            
-            double xoffset = locx[f] + cos(newangle*PI/180)*newdistance;
-            double yoffset = locy[f]+ -1*sin(newangle*PI/180)*newdistance;
-                //testing statements
-                /*cout<<"x1: "<<current1x<<"y1: "<<current1y<<endl;
-                cout<<"x2: "<<current2x<<"y2: "<<current2y<<endl;
-                cout<<"x3: "<<xoffset<<"y3: "<<yoffset<<endl;
-                cout<<"angle: "<<newangle<<endl;
-                cout<<"scale: "<<scale<<endl;
-                cout<<"testd1: "<<testd1<<endl;
-                cout<<"orientation: "<<orientation<<endl;*/
+            double testd1 = sqrt(pow((constely[starcount] - constely[starcount-1]),2)+ pow((constelx[starcount] - constelx[starcount-1]),2));
                 
-            for (int r = keypoints.size(); r >= 0 ; r--) {
-                    if ((locx[r] <= searchzone+xoffset && locx[r] >= xoffset-searchzone)  && (locy[r] <= searchzone+yoffset && locy[r] >= yoffset-searchzone)) {
-                        starcount++;
-
-                        double xoffset3 = locx[r]+(cos(((orientation+angle3)*PI)/180))*(d3*scale);
-                        double yoffset3 = locy[r]+(-1*sin(((orientation+angle3)*PI)/180))*(d3*scale);
+            double scale = testd1 / distances[0];
+                
+            double orientation = -1 * (angles[0] - (360-180*atan2(constely[starcount] - constely[starcount-1], constelx[starcount] - constelx[starcount-1])/PI));
+                
+            double newdistance = scale * distances[1];
+            double newangle = orientation + angles[1];
+            
+            double xcalc = locx[f] + cos(newangle*PI/180)*newdistance;
+            double ycalc = locy[f]+ -1*sin(newangle*PI/180)*newdistance;
+                
+                hit = CheckPoints( xcalc, ycalc, numstars, locx, locy, foundx, foundy);
+                
+                for (int i = 2; i < 7; i++) {
+                    if (hit) {
                         
-                        for (int q = keypoints.size(); q >= 0; q--) {
-                            if ((locx[q] <= searchzone+xoffset3 && locx[q] >= xoffset3-searchzone)  && (locy[q] <= searchzone+yoffset3 && locy[q] >= yoffset3-searchzone)){
-                                starcount++;
-
-                                double xoffset4 = locx[q]+(cos(((orientation+angle4)*PI)/180))*(d4*scale);
-                                double yoffset4 = locy[q]+(-1*sin(((orientation+angle4)*PI)/180))*(d4*scale);
-
-                                for (int q = keypoints.size(); q >= 0; q--) {
-                                    if ((locx[q] <= searchzone+xoffset4 && locx[q] >= xoffset4-searchzone)  && (locy[q] <= searchzone+yoffset4 && locy[q] >= yoffset4-searchzone)){
-                                        starcount++;
-
-                                        double xoffset5 = locx[q]+(cos(((orientation+angle5)*PI)/180))*(d5*scale);
-                                        double yoffset5 = locy[q]+(-1*sin(((orientation+angle5)*PI)/180))*(d5*scale);
-                                        for (int q = keypoints.size(); q >= 0; q--) {
-                                            if ((locx[q] <= searchzone+xoffset5 && locx[q] >= xoffset5-searchzone)  && (locy[q] <= searchzone+yoffset5 && locy[q] >= yoffset5-searchzone)){
-                                                starcount++;
-                                                
-                                                double xoffset6 = locx[q]+(cos(((orientation+angle6)*PI)/180))*(d6*scale);
-                                                double yoffset6 = locy[q]+(-1*sin(((orientation+angle6)*PI)/180))*(d6*scale);
-                                                for (int q = keypoints.size(); q >= 0; q--) {
-                                                    if ((locx[q] <= searchzone+xoffset6 && locx[q] >= xoffset6-searchzone)  && (locy[q] <= searchzone+yoffset6 && locy[q] >= yoffset6-searchzone)){
-                                                        starcount++;
-
-                                                        Point a6(xoffset6,yoffset6), b6(xoffset5,yoffset5);
-                                                        line(blobimage, a6, b6, color);
-                                                        Point a5(xoffset4,yoffset4), b5(xoffset5,yoffset5);
-                                                        line(blobimage, a5, b5, color);
-                                                        Point a4(xoffset3,yoffset3), b4(xoffset4,yoffset4);
-                                                        line(blobimage, a4, b4, color);
-                                                        Point a3(xoffset3,yoffset3), b3(xoffset,yoffset);
-                                                        line(blobimage, a3, b3, color);
-                                                        Point a2(current2x,current2y), b2(xoffset,yoffset);
-                                                        line(blobimage, a2, b2, color);
-                                                        Point a1(current2x,current2y), b1(current1x,current1y);
-                                                        line(blobimage, a1, b1, color);
-                                                        Point a7(xoffset6,yoffset6), b7(xoffset3,yoffset3);
-                                                        line(blobimage, a7, b7, color);
-                                                        
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                        starcount = i;
+                        constelx[i] = foundx;
+                        constely[i] = foundy;
+                        
+                        Point a1(constelx[i-1],constely[i-1]), b1(constelx[i],constely[i]);
+                        line(image3, a1, b1, color);
+                        
+                        if (visualmode == true) {
+                            waitKey(150);
+                            imshow("Searching..", image3);
+                        }
+                        
+                        CalcPoints(xcalc, ycalc, orientation, scale, angles[i], distances[i]);
+                        
+                        hit = CheckPoints(xcalc, ycalc, numstars, locx, locy, foundx, foundy);
+                        
+                        if (i == 6) {
+                            Point a1(constelx[i],constely[i]), b1(constelx[i-3],constely[i-3]);
+                            line(image3, a1, b1, color);
+                            
+                            if (visualmode == true) {
+                                imshow("Searching..", image3);
                             }
+                            
+                            looking = false;
                         }
                     }
                 }
+            }
+            
+            if (looking  == false) {
+                break;
             }
         }
     }
@@ -290,23 +309,31 @@ int main(int argc, char **argv) {
     }
     
     //displaying statistics of image
+    cout<<"Constellation Analysis for image: "<<filename<<endl;
     cout<<"intensity filter value: "<<intensity<<endl;
     cout<<"Search zone size: "<<searchzone<<endl;
-    cout<<"# of Stars: "<<keypoints.size()<<endl;
-    //cout<<"Size of stars: "<<starsize<<" pixels"<<endl;
+    cout<<"# of Stars: "<<numstars<<endl;
     
+    if (testingmode == true) {
+        imshow("filter stars", blobimage);
+    }
+   
+    if (looking == true) {
+        cout<<"Unable to find Big Dipper constellation"<<endl;
+    }
+    else {
+        cout<<"Big Dipper constellation found!"<<endl;
+        imshow("Found", image3);
+    }
     //saving output
     string outputDir = string(argv[2]);
     string outputFile = outputDir + "/" + filename;
-    imwrite(outputFile, blobimage);
+    imwrite(outputFile, image3);
     
-    imshow( "Result", blobimage);
+    //imshow( "Result", blobimage);
 
     waitKey(-1);
     destroyAllWindows();
     
 	return 0;
 }
-
-
-
