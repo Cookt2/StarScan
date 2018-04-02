@@ -19,11 +19,11 @@ const long double PI = 3.141592653589793238;
 
 //Important variables (these values change for accuracy)
 //filtervalue is 0-255 (255 catches nothing/0 catches everything)
-double intensity = 150.0;
-int searchzone = 10;
+double intensity = 100.0;
+int searchzone = 15;
 int starsize = 2;
-bool visualmode = false;
-bool testingmode = true;
+bool visualmode = true;
+bool testingmode = false;
 
 //code from prof Reale's assignment 2 CS490
 string getFilename(string path) {
