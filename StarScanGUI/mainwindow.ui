@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>StarScan</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
@@ -49,6 +49,15 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>35</number>
+    </property>
+    <property name="value">
+     <number>10</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -61,6 +70,15 @@
       <width>160</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>20</number>
+    </property>
+    <property name="maximum">
+     <number>240</number>
+    </property>
+    <property name="value">
+     <number>125</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -75,6 +93,15 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>35</number>
+    </property>
+    <property name="value">
+     <number>10</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="spinBox_2">
     <property name="geometry">
@@ -84,6 +111,15 @@
       <width>48</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>20</number>
+    </property>
+    <property name="maximum">
+     <number>240</number>
+    </property>
+    <property name="value">
+     <number>125</number>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -136,7 +172,7 @@
      </rect>
     </property>
     <property name="value">
-     <number>24</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -280,6 +316,24 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>220</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="text">
+     <string>Waiting...</string>
     </property>
    </widget>
   </widget>

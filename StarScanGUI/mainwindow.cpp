@@ -15,10 +15,10 @@ const long double PI = 3.141592653589793238;
 
 //Important variables (these values change for accuracy)
 //filtervalue is 0-255 (255 catches nothing/0 catches everything)
-double intensity = 100.0;
-int searchzone = 15;
+double intensity;
+int searchzone;
 int starsize = 2;
-bool visualmode = false;
+bool visualmode = true;
 bool testingmode = false;
 
 //code from prof Reale's assignment 2 CS490
@@ -73,6 +73,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+    visualmode = ui->checkBox->isChecked();
+    testingmode = ui->checkBox_2->isChecked();
+    destroyAllWindows();
     QString i;
     i = ui->lineEdit->text();
 
@@ -82,10 +85,9 @@ void MainWindow::on_pushButton_2_clicked()
         cout<<"ERROR!: Output/Input Path Empty, Specify Path "<<endl;
     }
     else {
-
-
-
-    //loading and displaying orginal image
+        searchzone = ui->horizontalSlider->value();
+        intensity = ui->horizontalSlider_2->value();
+        //loading and displaying orginal image
         string filepath = i.toStdString();
         Mat image = imread(filepath, IMREAD_GRAYSCALE);
         Mat image2 = imread(filepath, IMREAD_GRAYSCALE);
@@ -93,6 +95,8 @@ void MainWindow::on_pushButton_2_clicked()
             cout<<"ERROR: Invalid Input Path!"<<endl;
         }
         else {
+            ui->label_7->setText("loading image...");
+
         Mat image3 = imread(filepath, CV_LOAD_IMAGE_COLOR);
         Mat image4 = imread(filepath, CV_LOAD_IMAGE_COLOR);
         string filename = getFilename(filepath);
@@ -179,6 +183,9 @@ void MainWindow::on_pushButton_2_clicked()
             }
         }
 
+        //ui->progressBar->setValue(10);
+        ui->label_7->setText("filtering stars...");
+
         //canny edge detection
         Mat edge;
         Canny(FImage, edge, 10, 220);
@@ -195,6 +202,7 @@ void MainWindow::on_pushButton_2_clicked()
             drawContours( drawing, contours, i, color1, starsize, 8, hierarchy, 2, Point() );
         }
 
+        //ui->progressBar->setValue(20);
         //Simple Blob Dection
         //referenced from: https://docs.opencv.org/3.3.1/d0/d7a/classcv_1_1SimpleBlobDetector.html
         SimpleBlobDetector::Params params;
@@ -219,6 +227,8 @@ void MainWindow::on_pushButton_2_clicked()
         double* locy = new double[keypoints.size()];
         int numstars = keypoints.size();
 
+        //ui->progressBar->setValue(30);
+
         int r = 0;
         //moving points from keypoints vector to arrays for ease of use
         for(vector<KeyPoint>::iterator blobIt = keypoints.begin(); blobIt != keypoints.end(); blobIt++){
@@ -235,9 +245,12 @@ void MainWindow::on_pushButton_2_clicked()
         int foundy;
         bool hit = true;
         bool looking = true;
+        int status = 0;
 
         //search algorithm
         for (int i = keypoints.size()-1; i >= 0; i--) {
+            ui->label_7->setText("searching the galaxy...");
+
             if (looking == false) {
                 break;
             }
@@ -247,6 +260,11 @@ void MainWindow::on_pushButton_2_clicked()
 
             //looping through every star
             for (int f = keypoints.size()-1; f >= 0; f--) {
+
+                status++;
+                double status1 = (status/((double)keypoints.size()*keypoints.size()))*100;
+                ui->progressBar->setValue(status1);
+
                 image4.copyTo(image3);
                 starcount = 1;
                 constelx[starcount] = locx[f];
@@ -299,6 +317,7 @@ void MainWindow::on_pushButton_2_clicked()
                             hit = CheckPoints(xcalc, ycalc, numstars, locx, locy, foundx, foundy);
 
                             if (i == 6) {
+
                                 Point a1(constelx[i],constely[i]), b1(constelx[i-3],constely[i-3]);
                                 line(image3, a1, b1, color);
 
@@ -313,6 +332,7 @@ void MainWindow::on_pushButton_2_clicked()
                 }
 
                 if (looking  == false) {
+
                     break;
                 }
             }
@@ -330,6 +350,7 @@ void MainWindow::on_pushButton_2_clicked()
             constel.at<uchar>(round(locy[k]),round(locx[k])) = 255;
 
         }
+        ui->label_7->setText("saving image...");
 
         //displaying statistics of image
         cout<<"Constellation Analysis for image: "<<filename<<endl;
@@ -344,9 +365,11 @@ void MainWindow::on_pushButton_2_clicked()
         if(visualmode == true){
             if (looking == true) {
                 cout<<"Unable to find Big Dipper constellation"<<endl;
+                destroyWindow("Searching..");
             }
             else {
                 cout<<"Big Dipper constellation found!"<<endl;
+                destroyWindow("Searching..");
                 imshow("Found", image3);
             }
         }
@@ -354,10 +377,33 @@ void MainWindow::on_pushButton_2_clicked()
         //saving output
         string outputDir = string(o.toStdString());
         string outputFile = outputDir + "/" + filename;
-        imwrite(outputFile, image3);
 
-        //waitKey(-1);
-        //destroyAllWindows();
+        imwrite(outputFile, image3);
+        //ui->progressBar->setValue(100);
+        ui->progressBar->setValue(100);
+        ui->label_7->setText("finished.");
+        waitKey(-1);
+        destroyAllWindows();
         }
 }
+}
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+    ui->horizontalSlider->setValue(arg1);
+}
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    ui->spinBox->setValue(value);
+}
+
+void MainWindow::on_spinBox_2_valueChanged(int arg1)
+{
+    ui->horizontalSlider_2->setValue(arg1);
+}
+
+void MainWindow::on_horizontalSlider_2_valueChanged(int value)
+{
+    ui->spinBox_2->setValue(value);
 }

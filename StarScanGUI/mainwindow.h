@@ -18,6 +18,14 @@ public:
 private slots:
     void on_pushButton_2_clicked();
 
+    void on_spinBox_valueChanged(int arg1);
+
+    void on_horizontalSlider_valueChanged(int value);
+
+    void on_spinBox_2_valueChanged(int arg1);
+
+    void on_horizontalSlider_2_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };
