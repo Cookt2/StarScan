@@ -1,9 +1,9 @@
-# StarScan README
-****************************************
-*README FOR STAR SCAN PROJECT*
-****************************************
+# StarScan
 
-Task: Application designed to locate constellations in an image of the night sky
+*To identify stars and constellations in the night sky...*
+
+
+Task: Application designed to locate/identify constellations in an image of the night sky
 
 Target Platform: OSX High Sierra 10.13.3
 Language: C++ utlizing OPENCV/Qt
