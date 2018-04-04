@@ -5,10 +5,20 @@
 
 Task: Application designed to locate constellations in an image of the night sky
 
-Specific Outcomes:
-- generates a processed image that highlights constellations and stars
-- reports on statistics:
-    number of stars and number of constellations
+Target Platform: OSX High Sierra 10.13.3
+Language: C++ utlizing OPENCV/Qt
+
+Accomplished:
+    - researched and obtained starter data set
+    - theorized and implemented star filter
+    - theorized and implemented constellation scanning algorithm
+    - designed and implemented basic GUI
+    - added features: filter restriction, constellation restriction,
+                                 visual mode, and debug mode
+                                 
+TODO:
+    - write documentation (how to use)
+    - enchance scanning ablility (make search algorithm smarter)
     
 Link to research progress: https://docs.google.com/document/d/1_bJKNPSAX5zdqz0xw0Ksm71huBRVf4OoHK5Zf35kDOo/edit
 
