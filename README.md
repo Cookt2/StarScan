@@ -9,6 +9,7 @@ Target Platform: OSX High Sierra 10.13.3
 Language: C++ utlizing OPENCV/Qt
 
 Accomplished:
+
     - researched and obtained starter data set
     
     - theorized and implemented star filter
@@ -18,10 +19,10 @@ Accomplished:
     - designed and implemented basic GUI
     
     - added features:
-    filter restriction,
-    constellation restriction,
-    visual mode,
-    and debug mode
+    filter restriction
+    constellation restriction
+    visual mode
+    debug mode
                                  
 TODO:
 
