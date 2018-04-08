@@ -17,9 +17,10 @@ const long double PI = 3.141592653589793238;
 //filtervalue is 0-255 (255 catches nothing/0 catches everything)
 double intensity;
 int searchzone;
-int starsize = 2;
+int starsize = 4;
 bool visualmode = true;
 bool testingmode = false;
+
 
 //code from prof Reale's assignment 2 CS490
 string getFilename(string path) {
@@ -73,6 +74,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+
     visualmode = ui->checkBox->isChecked();
     testingmode = ui->checkBox_2->isChecked();
     destroyAllWindows();
@@ -165,10 +167,10 @@ void MainWindow::on_pushButton_2_clicked()
         for (int i = 0; i < image.rows; i++) {
             for (int j = 0; j < image.cols; j++) {
                 if (hits[j*image.rows+i] == 1) {
-                    image.at<uchar>(i,j) = 255;
+                    image.at<uchar>(i,j) = 0;
                 }
                 else
-                    image.at<uchar>(i,j) = 0;
+                    image.at<uchar>(i,j) = 255;
             }
         }
 
@@ -186,21 +188,7 @@ void MainWindow::on_pushButton_2_clicked()
         //ui->progressBar->setValue(10);
         ui->label_7->setText("filtering stars...");
 
-        //canny edge detection
-        Mat edge;
-        Canny(FImage, edge, 10, 220);
 
-        //Finding contours
-        //referenced from: https://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/find_contours/find_contours.html
-        vector<vector<Point> > contours;
-        vector<Vec4i> hierarchy;
-        findContours( edge, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
-        Mat drawing = Mat::zeros( edge.size(), CV_8UC3 );
-        for( int i = 0; i< contours.size(); i++ )
-        {
-            Scalar color1 = Scalar( 255, 255, 255);
-            drawContours( drawing, contours, i, color1, starsize, 8, hierarchy, 2, Point() );
-        }
 
         //ui->progressBar->setValue(20);
         //Simple Blob Dection
@@ -210,7 +198,7 @@ void MainWindow::on_pushButton_2_clicked()
         params.minArea = 1;
         params.maxArea = 1000.0f;
         params.filterByColor = true;
-        params.blobColor = 255;
+        params.blobColor = 0;
         params.filterByConvexity = false;
         params.filterByInertia = false;
         params.filterByCircularity = true;
@@ -218,9 +206,13 @@ void MainWindow::on_pushButton_2_clicked()
         params.maxCircularity = 1.0f;
         Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
         vector<KeyPoint> keypoints;
-        detector->detect( drawing,keypoints);
+        detector->detect( image,keypoints);
         Mat blobimage;
-        drawKeypoints( drawing, keypoints, blobimage, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+        drawKeypoints( image, keypoints, blobimage, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+
+        if (testingmode == true) {
+            imshow("filter stars", blobimage);
+        }
 
         //center locations of each star
         double* locx = new double[keypoints.size()];
@@ -358,11 +350,8 @@ void MainWindow::on_pushButton_2_clicked()
         cout<<"Search zone size: "<<searchzone<<endl;
         cout<<"# of Stars: "<<numstars<<endl;
 
-        if (testingmode == true) {
-            imshow("filter stars", blobimage);
-        }
 
-        if(visualmode == true){
+
             if (looking == true) {
                 cout<<"Unable to find Big Dipper constellation"<<endl;
                 destroyWindow("Searching..");
@@ -372,7 +361,6 @@ void MainWindow::on_pushButton_2_clicked()
                 destroyWindow("Searching..");
                 imshow("Found", image3);
             }
-        }
 
         //saving output
         string outputDir = string(o.toStdString());

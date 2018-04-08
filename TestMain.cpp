@@ -138,13 +138,14 @@ int main(int argc, char **argv) {
     for (int i = 0; i < image.rows; i++) {
         for (int j = 0; j < image.cols; j++) {
             if (hits[j*image.rows+i] == 1) {
-                image.at<uchar>(i,j) = 255;
+                image.at<uchar>(i,j) = 0;
             }
             else
-                image.at<uchar>(i,j) = 0;
+                image.at<uchar>(i,j) = 255;
         }
     }
 
+    
     //recoloring binary image to green stars
     for (int i = 0; i < image.rows; i++) {
         for (int j = 0; j < image.cols; j++) {
@@ -158,8 +159,9 @@ int main(int argc, char **argv) {
     
     //canny edge detection
     Mat edge;
-    Canny(FImage, edge, 10, 220);
+    Canny(image, edge, 10, 220);
     
+ 
     //Finding contours
     //referenced from: https://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/find_contours/find_contours.html
     vector<vector<Point> > contours;
@@ -179,7 +181,7 @@ int main(int argc, char **argv) {
     params.minArea = 1;
     params.maxArea = 1000.0f;
     params.filterByColor = true;
-    params.blobColor = 255;
+    params.blobColor = 0;
     params.filterByConvexity = false;
     params.filterByInertia = false;
     params.filterByCircularity = true;
@@ -187,9 +189,11 @@ int main(int argc, char **argv) {
     params.maxCircularity = 1.0f;
     Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
     vector<KeyPoint> keypoints;
-    detector->detect( drawing,keypoints);
+    detector->detect( image,keypoints);
     Mat blobimage;
-    drawKeypoints( drawing, keypoints, blobimage, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+    drawKeypoints( image, keypoints, blobimage, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+    
+    imshow("blob", blobimage);
     
     //center locations of each star
     double* locx = new double[keypoints.size()];
