@@ -5,6 +5,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "opencv2/imgproc/imgproc.hpp"
+#include <QFileDialog>
 #include <math.h>
 #include "opencv2/opencv.hpp"
 #include <unistd.h>
@@ -185,12 +186,8 @@ void MainWindow::on_pushButton_2_clicked()
             }
         }
 
-        //ui->progressBar->setValue(10);
         ui->label_7->setText("filtering stars...");
 
-
-
-        //ui->progressBar->setValue(20);
         //Simple Blob Dection
         //referenced from: https://docs.opencv.org/3.3.1/d0/d7a/classcv_1_1SimpleBlobDetector.html
         SimpleBlobDetector::Params params;
@@ -219,8 +216,6 @@ void MainWindow::on_pushButton_2_clicked()
         double* locy = new double[keypoints.size()];
         int numstars = keypoints.size();
 
-        //ui->progressBar->setValue(30);
-
         int r = 0;
         //moving points from keypoints vector to arrays for ease of use
         for(vector<KeyPoint>::iterator blobIt = keypoints.begin(); blobIt != keypoints.end(); blobIt++){
@@ -241,7 +236,8 @@ void MainWindow::on_pushButton_2_clicked()
 
         //search algorithm
         for (int i = keypoints.size()-1; i >= 0; i--) {
-            ui->label_7->setText("searching the galaxy...");
+            QString searchingtext = QString("searching %1 stars..").arg(keypoints.size());
+            ui->label_7->setText(searchingtext);
 
             if (looking == false) {
                 break;
@@ -344,20 +340,12 @@ void MainWindow::on_pushButton_2_clicked()
         }
         ui->label_7->setText("saving image...");
 
-        //displaying statistics of image
-        cout<<"Constellation Analysis for image: "<<filename<<endl;
-        cout<<"intensity filter value: "<<intensity<<endl;
-        cout<<"Search zone size: "<<searchzone<<endl;
-        cout<<"# of Stars: "<<numstars<<endl;
-
-
-
             if (looking == true) {
-                cout<<"Unable to find Big Dipper constellation"<<endl;
+                ui->label_7->setText("No constellation found..");
                 destroyWindow("Searching..");
             }
             else {
-                cout<<"Big Dipper constellation found!"<<endl;
+                ui->label_7->setText("big dipper constellation found..");
                 destroyWindow("Searching..");
                 imshow("Found", image3);
             }
@@ -367,9 +355,8 @@ void MainWindow::on_pushButton_2_clicked()
         string outputFile = outputDir + "/" + filename;
 
         imwrite(outputFile, image3);
-        //ui->progressBar->setValue(100);
         ui->progressBar->setValue(100);
-        ui->label_7->setText("finished.");
+
         waitKey(-1);
         destroyAllWindows();
         }
@@ -394,4 +381,19 @@ void MainWindow::on_spinBox_2_valueChanged(int arg1)
 void MainWindow::on_horizontalSlider_2_valueChanged(int value)
 {
     ui->spinBox_2->setValue(value);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+
+   QString filePath = QFileDialog::getOpenFileName(this, "select Image file",QDir::homePath(),"Images (*.png *.jpg)");
+   ui->lineEdit->setText(filePath);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+
+    QString filePath1 = QFileDialog::getExistingDirectory(this,"Select folder",QDir::homePath());
+    ui->lineEdit_2->setText(filePath1);
+
 }

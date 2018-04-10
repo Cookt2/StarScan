@@ -10,10 +10,46 @@
     <height>283</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>283</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>283</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>StarScan</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>243</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>600</width>
+     <height>243</height>
+    </size>
+   </property>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -289,9 +325,9 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>10</x>
       <y>10</y>
-      <width>221</width>
+      <width>311</width>
       <height>31</height>
      </rect>
     </property>
@@ -312,7 +348,7 @@
      <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
-     <string>StarScan by Taylor Cook</string>
+     <string>StarScan Version 1.0 by Taylor Cook</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -323,7 +359,7 @@
      <rect>
       <x>10</x>
       <y>220</y>
-      <width>161</width>
+      <width>231</width>
       <height>16</height>
      </rect>
     </property>
@@ -333,7 +369,33 @@
      </font>
     </property>
     <property name="text">
-     <string>Waiting...</string>
+     <string>waiting...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>50</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>120</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search</string>
     </property>
    </widget>
   </widget>
