@@ -1,5 +1,7 @@
 
-# <img src="Capture.PNG" alt="My cool logo"/>
+# <img src="Capture.PNG" alt="headline"/>
+#
+# <img src="capture2.png" alt="headline2"/>
 ********************************************************************
 *To identify stars and constellations in the night sky...*
 ********************************************************************
