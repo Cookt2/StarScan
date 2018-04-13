@@ -1,8 +1,9 @@
-# StarScan
+
+# <img src="Capture.PNG" alt="My cool logo"/>
 ********************************************************************
 *To identify stars and constellations in the night sky...*
 ********************************************************************
-<img src="Capture.PNG" alt="My cool logo"/>
+
 Task: Application designed to locate/identify constellations in an image of the night sky
 
 Target Platform: OSX High Sierra 10.13.3
