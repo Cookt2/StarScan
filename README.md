@@ -8,29 +8,7 @@ Target Platform: OSX High Sierra 10.13.3
 
 Language: C++ utlizing OPENCV/Qt
 
-Accomplished:
-
-    - researched and obtained starter data set
-    
-    - theorized and implemented star filter
-    
-    - theorized and implemented constellation scanning algorithm
-    
-    - designed and implemented basic GUI
-    
-    - added features:
-    filter restriction
-    constellation restriction
-    visual mode
-    debug mode
-                                 
-TODO:
-
-    - write documentation (how to use)
-    
-    - enchance scanning ablility (make search algorithm smarter)
-    
-Link to research progress: https://docs.google.com/document/d/1_bJKNPSAX5zdqz0xw0Ksm71huBRVf4OoHK5Zf35kDOo/edit
+Link to documentation: https://docs.google.com/presentation/d/13Bdzy6GP_IiHa_QVBSqyVurXQltCo3bKxevRx_Wp8hI/edit#slide=id.g35f391192_00
 
 CAPSTONE PROJECT CS 498
 
