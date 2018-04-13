@@ -2,6 +2,7 @@
 ********************************************************************
 *To identify stars and constellations in the night sky...*
 ********************************************************************
+![Screenshot](Capture.png)
 Task: Application designed to locate/identify constellations in an image of the night sky
 
 Target Platform: OSX High Sierra 10.13.3
