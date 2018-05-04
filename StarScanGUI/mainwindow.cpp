@@ -9,6 +9,7 @@
 #include <math.h>
 #include "opencv2/opencv.hpp"
 #include <unistd.h>
+#include <QElapsedTimer>
 
 using namespace cv;
 using namespace std;
@@ -88,6 +89,10 @@ void MainWindow::on_pushButton_2_clicked()
         cout<<"ERROR!: Output/Input Path Empty, Specify Path "<<endl;
     }
     else {
+
+        QElapsedTimer timer;
+            timer.start();
+
         searchzone = ui->horizontalSlider->value();
         intensity = ui->horizontalSlider_2->value();
         //loading and displaying orginal image
@@ -239,9 +244,9 @@ void MainWindow::on_pushButton_2_clicked()
             QString searchingtext = QString("searching %1 stars..").arg(keypoints.size());
             ui->label_7->setText(searchingtext);
 
-            if (looking == false) {
-                break;
-            }
+            //if (looking == false) {
+            //    break;
+            //}
             starcount = 0;
             constelx[starcount] = locx[i];
             constely[starcount] = locy[i];
@@ -285,14 +290,14 @@ void MainWindow::on_pushButton_2_clicked()
 
                     hit = CheckPoints( xcalc, ycalc, numstars, locx, locy, foundx, foundy);
 
-                    for (int i = 2; i < 7; i++) {
+                    for (int p = 2; p < 7; p++) {
                         if (hit) {
 
-                            starcount = i;
-                            constelx[i] = foundx;
-                            constely[i] = foundy;
+                            starcount = p;
+                            constelx[p] = foundx;
+                            constely[p] = foundy;
 
-                            Point a1(constelx[i-1],constely[i-1]), b1(constelx[i],constely[i]);
+                            Point a1(constelx[p-1],constely[p-1]), b1(constelx[p],constely[p]);
                             line(image3, a1, b1, color);
 
                             if (visualmode == true) {
@@ -300,29 +305,30 @@ void MainWindow::on_pushButton_2_clicked()
                                 imshow("Searching..", image3);
                             }
 
-                            CalcPoints(xcalc, ycalc, orientation, scale, angles[i], distances[i]);
+                            CalcPoints(xcalc, ycalc, orientation, scale, angles[p], distances[p]);
 
                             hit = CheckPoints(xcalc, ycalc, numstars, locx, locy, foundx, foundy);
 
-                            if (i == 6) {
+                            if (p == 6) {
 
-                                Point a1(constelx[i],constely[i]), b1(constelx[i-3],constely[i-3]);
+
+                                Point a1(constelx[p],constely[p]), b1(constelx[p-3],constely[p-3]);
                                 line(image3, a1, b1, color);
-
+                                image3.copyTo(image4);
                                 if (visualmode == true) {
                                     imshow("Searching..", image3);
                                 }
-
+                                starcount=1;
                                 looking = false;
                             }
                         }
                     }
                 }
 
-                if (looking  == false) {
+                //if (looking  == false) {
 
-                    break;
-                }
+                //    break;
+                //}
             }
         }
 
@@ -345,7 +351,7 @@ void MainWindow::on_pushButton_2_clicked()
                 destroyWindow("Searching..");
             }
             else {
-                ui->label_7->setText("big dipper constellation found..");
+                ui->label_7->setText(QString("big dipper constellation found. Time: %1ms").arg(timer.elapsed()));
                 destroyWindow("Searching..");
                 imshow("Found", image3);
             }
