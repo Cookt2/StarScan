@@ -1,4 +1,4 @@
-[![Build Status](http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos)](http://proteus:8080/job/VIAME_release_Centos/)
+http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos
 # <img src="Capture.PNG" alt="headline"/>
 #
 # <img src="capture2.png" alt="headline2"/>
