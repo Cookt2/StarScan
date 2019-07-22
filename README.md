@@ -1,4 +1,3 @@
-![alt text](http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos "Logo Title Text 1")
 http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos
 # <img src="Capture.PNG" alt="headline"/>
 #
