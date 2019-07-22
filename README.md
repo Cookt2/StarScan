@@ -1,4 +1,5 @@
-http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos
+[![Build Status](http://proteus:8080/job/VIAME_release_Ubuntu//lastBuild/buildStatus)](http://proteus:8080/job/VIAME_release_Ubuntu//lastBuild/)
+
 # <img src="Capture.PNG" alt="headline"/>
 #
 # <img src="capture2.png" alt="headline2"/>
