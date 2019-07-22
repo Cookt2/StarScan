@@ -1,4 +1,4 @@
-http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos.png
+http://proteus:8080/buildStatus/icon?job=VIAME_release_Centos
 # <img src="Capture.PNG" alt="headline"/>
 #
 # <img src="capture2.png" alt="headline2"/>
