@@ -1,4 +1,4 @@
-[![Build Status](http://proteus:8080/job/VIAME_release_Ubuntu/lastBuild/buildStatus)](http://proteus:8080/buildStatus/icon?job=VIAME_release_Ubuntu)
+https://img.shields.io/badge/build-passing-brightgreen.svg
 
 # <img src="Capture.PNG" alt="headline"/>
 #
